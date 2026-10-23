@@ -17,9 +17,32 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
         ),
-        body: Center(child: Text('Hello World',
-          style: TextStyle(fontSize: 24, color: Colors.deepPurple)))
+        body: Column(children: [
+          SizedBox(height: 10),
+          MyTextWidget(text: 'Text 1'),
+          SizedBox(height: 10),
+          MyTextWidget(text: 'Text 2'),
+          SizedBox(height: 10),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            MyTextWidget(text: 'Text 3'),
+            MyTextWidget(text: 'Text 4'),
+            MyTextWidget(text: 'Text 5'),
+          ],
+          )
+        ]
       ),
-    );
+    ));
+  }
+}
+
+class MyTextWidget extends StatelessWidget {
+  final String text;
+  const MyTextWidget({required this.text, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: Text(text,
+      style: TextStyle(fontSize: 24, color: Colors.deepPurple)));
   }
 }
